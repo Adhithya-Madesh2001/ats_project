@@ -107,17 +107,18 @@ def fileupload(request):
 
         if parsed_resumes:
             parsed_resumes.sort(key=lambda x: x['resume_score'], reverse=True)  # Sort resumes by score
+            return render(request, 'index.html', {'parsed_resumes': parsed_resumes})
 
-            response_content = "<h2>Extracted Resume Data</h2><pre>"
-            for result in parsed_resumes:
-                response_content += (f"Resume: {result['file']}\n"
-                                     f"Best Matched Role: {result['best_role']}\n"
-                                     f"Resume Score: {result['resume_score']} / 10\n"
-                                     f"Missing Skills : {result['missing_skills']}\n"
-                                     f"Matched Skills : {result['Matched_skills']}\n"
-                                     f"{'='*50}\n")
-            response_content += "</pre>"
-            return HttpResponse(response_content)
+            # response_content = "<h2>Extracted Resume Data</h2><pre>"
+            # for result in parsed_resumes:
+            #     response_content += (f"Resume: {result['file']}\n"
+            #                          f"Best Matched Role: {result['best_role']}\n"
+            #                          f"Resume Score: {result['resume_score']} / 10\n"
+            #                          f"Missing Skills : {result['missing_skills']}\n"
+            #                          f"Matched Skills : {result['Matched_skills']}\n"
+            #                          f"{'='*50}\n")
+            # response_content += "</pre>"
+            # return HttpResponse(response_content)
 
         return HttpResponse("No valid PDF or DOCX files uploaded.")
 
