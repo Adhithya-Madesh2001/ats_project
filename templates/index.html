@@ -4,20 +4,33 @@
     <meta charset="UTF-8">
     <title>Parsed Resumes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
         body {
             background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
         }
+
+        /* Page Heading Animation */
+        h2 {
+            animation: popIn 0.8s ease-in-out;
+        }
+
+        /* Card Styles */
         .card {
             border-left: 5px solid #0d6efd;
-            transition: transform 0.2s;
+            transition: transform 0.3s;
+            animation: fadeSlideUp 0.8s ease both;
         }
+
         .card:hover {
             transform: scale(1.01);
         }
+
+        /* Highlighted Tags */
         .score-badge {
             font-size: 1rem;
         }
+
         .highlight {
             background-color: #d1e7dd;
             padding: 4px 8px;
@@ -25,6 +38,7 @@
             color: #0f5132;
             font-weight: 500;
         }
+
         .missing {
             background-color: #f8d7da;
             padding: 4px 8px;
@@ -32,8 +46,39 @@
             color: #842029;
             font-weight: 500;
         }
+
+        /* Animation Keyframes */
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Optional: Delay animation for each card */
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        /* ...add more if needed */
     </style>
 </head>
+
 <body>
 <div class="container py-5">
     <h2 class="mb-4 text-center text-primary fw-bold">🎯 Extracted Resume Data</h2>
